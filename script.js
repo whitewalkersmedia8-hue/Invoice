@@ -1,82 +1,103 @@
 // Chayathma Photography Invoice Generator JavaScript
 
-// Service Catalog from Chayathma POS System
+// Service Catalog from Chayathma POS System - Updated with Actual Details
 const serviceCatalog = [
     {
-        category: "Events",
+        category: "Wedding & Event Coverage",
         services: [
-            { id: 'wedding_coverage', name: 'Wedding Coverage', price: 45000, description: 'Complete wedding day photography coverage' },
-            { id: 'homecoming', name: 'Homecoming', price: 80000, description: 'Traditional homecoming ceremony coverage' },
-            { id: 'engagement_session', name: 'Engagement Photography', price: 25000, description: 'Professional engagement photo session' },
-            { id: 'pre_wedding', name: 'Pre-Wedding Shoot', price: 35000, description: 'Pre-wedding photography session' },
-            { id: 'reception', name: 'Reception Coverage', price: 30000, description: 'Wedding reception photography' },
-            { id: 'poruwa_ceremony', name: 'Poruwa Ceremony', price: 40000, description: 'Traditional Poruwa ceremony photography' }
+            { id: 'wedding_coverage_full', name: 'Wedding Coverage (Shoot + Function)', price: 45000, description: 'Complete wedding day photography with shoot and function coverage' },
+            { id: 'wedding_coverage_shoot', name: 'Wedding Coverage (Shoot Only)', price: 35000, description: 'Wedding photography shoot coverage only' },
+            { id: 'homecoming_coverage_full', name: 'Homecoming Coverage (Shoot + Function)', price: 45000, description: 'Complete homecoming ceremony with shoot and function coverage' },
+            { id: 'homecoming_shoot', name: 'Homecoming Shoot', price: 35000, description: 'Homecoming photography shoot coverage only' }
         ]
     },
     {
-        category: "Albums",
+        category: "Wedding Enlargements",
         services: [
-            { id: 'album_17x24', name: '17x24 Magazine Album', price: 80000, description: 'Premium large format magazine album' },
-            { id: 'album_12x18', name: '12x18 Magazine Album', price: 40000, description: 'Standard magazine album' },
-            { id: 'album_10x15', name: '10x15 Standard Album', price: 25000, description: 'Classic wedding album' },
-            { id: 'story_album', name: 'Story Album', price: 15000, description: 'Narrative style photo album' },
-            { id: 'coffee_table_book', name: 'Coffee Table Book', price: 60000, description: 'Luxury coffee table book' },
-            { id: 'parent_album', name: 'Parent Album (8x10)', price: 30000, description: 'Compact album for parents' }
+            { id: 'wedding_12x18', name: '12 x 18 Wedding Enlargement', price: 4500, description: '12x18 inch wedding photo enlargement' },
+            { id: 'wedding_16x24', name: '16 x 24 Wedding Enlargement', price: 9500, description: '16x24 inch wedding photo enlargement' },
+            { id: 'wedding_20x30', name: '20 x 30 Wedding Enlargement', price: 13500, description: '20x30 inch wedding photo enlargement' }
+        ]
+    },
+    {
+        category: "Homecoming Enlargements",
+        services: [
+            { id: 'homecoming_12x18', name: '12 x 18 Homecoming Enlargement', price: 5000, description: '12x18 inch homecoming photo enlargement' },
+            { id: 'homecoming_16x24', name: '16 x 24 Homecoming Enlargement', price: 9500, description: '16x24 inch homecoming photo enlargement' },
+            { id: 'homecoming_20x30', name: '20 x 30 Homecoming Enlargement', price: 13500, description: '20x30 inch homecoming photo enlargement' }
+        ]
+    },
+    {
+        category: "Group & Family Enlargements",
+        services: [
+            { id: 'group_12x18', name: '12x18 Group Enlargement', price: 5000, description: '12x18 inch group photo enlargement' },
+            { id: 'family_10x15', name: '10 x 15 Family Enlargement', price: 3500, description: '10x15 inch family photo enlargement' },
+            { id: 'homecoming_12x18_alt', name: '12 x 18 Homecoming Enlargement', price: 5000, description: '12x18 inch homecoming photo enlargement' }
+        ]
+    },
+    {
+        category: "Magazine Albums",
+        services: [
+            { id: 'album_8x20_20p', name: '8 x 20 Magazine Album 20 Pages', price: 25000, description: '8x20 inch magazine album with 20 pages' },
+            { id: 'album_8x20_30p', name: '8 x 20 Magazine Album 30 Pages', price: 30000, description: '8x20 inch magazine album with 30 pages' },
+            { id: 'album_10x24_50p', name: '10 x 24 Magazine Album 50 pages', price: 45000, description: '10x24 inch magazine album with 50 pages' },
+            { id: 'album_10x24_60p', name: '10 x 24 Magazine Album 60 Pages', price: 52000, description: '10x24 inch magazine album with 60 pages' },
+            { id: 'album_12x30_50p', name: '12 x 30 Magazine Album 50 Pages', price: 58000, description: '12x30 inch magazine album with 50 pages' },
+            { id: 'album_12x30_60p', name: '12 x 30 Magazine Album 60 Pages', price: 65000, description: '12x30 inch magazine album with 60 pages' },
+            { id: 'album_15x24_50p', name: '15x24 Magazine Album 50 Pages', price: 75000, description: '15x24 inch magazine album with 50 pages' },
+            { id: 'album_17x24_60p', name: '17x24 Magazine Album 60 Pages', price: 80000, description: '17x24 inch magazine album with 60 pages' }
+        ]
+    },
+    {
+        category: "Story Albums",
+        services: [
+            { id: 'family_story_8x20_30p', name: '8 x 20 Family Story Album 30 Pages', price: 20000, description: '8x20 inch family story album with 30 pages' },
+            { id: 'family_story_10x24_20p', name: '10 x 24 Family Story Album 20 Pages', price: 25000, description: '10x24 inch family story album with 20 pages' }
+        ]
+    },
+    {
+        category: "Thank You Cards",
+        services: [
+            { id: 'thank_you_5x7', name: 'Thank you cards 5x7', price: 120, description: '5x7 inch thank you cards' },
+            { id: 'thank_you_5x8', name: 'Thank you cards 5x8', price: 130, description: '5x8 inch thank you cards' },
+            { id: 'thank_you_6x6', name: 'Thank you cards 6x6', price: 100, description: '6x6 inch thank you cards' },
+            { id: 'thank_you_6x8', name: 'Thank you cards 6x8', price: 140, description: '6x8 inch thank you cards' }
+        ]
+    },
+    {
+        category: "Preshoot Services",
+        services: [
+            { id: 'preshoot_coverage', name: 'Preshoot Coverage + Edited Photos', price: 35000, description: 'Pre-wedding shoot with professional editing' },
+            { id: 'engagement_shoot', name: 'Engagement Shoot & Registration Coverage', price: 50000, description: 'Engagement ceremony and registration coverage' }
+        ]
+    },
+    {
+        category: "Preshoot Albums",
+        services: [
+            { id: 'preshoot_8x20_30p', name: '8 x 20 Preshoot Story Album 30 Pages', price: 20000, description: '8x20 inch pre-wedding story album with 30 pages' },
+            { id: 'preshoot_9x20_30p', name: '9 x 20 Preshoot Story Album 30 Pages', price: 25000, description: '9x20 inch pre-wedding story album with 30 pages' },
+            { id: 'preshoot_12x16_30p', name: '12 x 16 Preshoot Story Album 30 Pages', price: 30000, description: '12x16 inch pre-wedding story album with 30 pages' }
         ]
     },
     {
         category: "Video Services",
         services: [
-            { id: 'video_editing', name: 'Video Editing', price: 25000, description: 'Professional video editing service' },
-            { id: 'drone_video', name: 'Drone Video', price: 15000, description: 'Aerial drone videography' },
-            { id: 'highlight_reel', name: 'Wedding Highlight Reel', price: 20000, description: 'Cinematic wedding highlight video' },
-            { id: 'full_ceremony', name: 'Full Ceremony Recording', price: 35000, description: 'Complete ceremony documentation' },
-            { id: 'pre_wedding_video', name: 'Pre-Wedding Video', price: 30000, description: 'Pre-wedding cinematic video' }
+            { id: 'preshoot_trailer', name: 'Preshoot Trailer Video', price: 35000, description: 'Cinematic pre-wedding trailer video' },
+            { id: 'wedding_trailer', name: 'Wedding Day Trailer', price: 50000, description: 'Wedding day cinematic trailer' },
+            { id: 'wedding_video_trailer', name: 'Wedding Day Video + Trailer', price: 75000, description: 'Complete wedding day video with trailer' },
+            { id: 'homecoming_trailer', name: 'Full Homecoming Day Trailer', price: 40000, description: 'Complete homecoming ceremony trailer' },
+            { id: 'full_wedding_homecoming', name: 'Full Wedding Day + Full Homecoming Day', price: 60000, description: 'Complete wedding and homecoming video coverage' },
+            { id: 'preshoot_trailer_drone', name: 'Preshoot Trailer Video + Drone', price: 50000, description: 'Pre-wedding trailer with drone footage' }
         ]
     },
     {
-        category: "Photography",
+        category: "Plymount Enlargements",
         services: [
-            { id: 'preshoot', name: 'Preshoot', price: 7500, description: 'Pre-wedding photography session' },
-            { id: 'portrait_session', name: 'Portrait Session', price: 12000, description: 'Professional portrait photography' },
-            { id: 'family_portrait', name: 'Family Portrait', price: 15000, description: 'Family photography session' },
-            { id: 'maternity_shoot', name: 'Maternity Photography', price: 18000, description: 'Maternity photo session' },
-            { id: 'newborn_session', name: 'Newborn Photography', price: 20000, description: 'Newborn baby photography' },
-            { id: 'outdoor_session', name: 'Outdoor Photography Session', price: 16000, description: 'Outdoor location photography' }
-        ]
-    },
-    {
-        category: "Printing",
-        services: [
-            { id: 'enlargement_5x7', name: '5x7 Enlargement', price: 60, description: '5x7 inch photo enlargement' },
-            { id: 'enlargement_8x10', name: '8x10 Enlargement', price: 120, description: '8x10 inch photo enlargement' },
-            { id: 'enlargement_8x12', name: '8x12 Enlargement', price: 150, description: '8x12 inch photo enlargement' },
-            { id: 'enlargement_11x14', name: '11x14 Enlargement', price: 250, description: '11x14 inch photo enlargement' },
-            { id: 'enlargement_16x20', name: '16x20 Enlargement', price: 450, description: '16x20 inch photo enlargement' },
-            { id: 'canvas_print', name: 'Canvas Print', price: 3500, description: 'High-quality canvas print' },
-            { id: 'metal_print', name: 'Metal Print', price: 4000, description: 'Modern metal print' },
-            { id: 'framed_print', name: 'Framed Print', price: 2500, description: 'Professional framed print' }
-        ]
-    },
-    {
-        category: "Cards & Stationery",
-        services: [
-            { id: 'thank_you_cards', name: 'Thank You Cards', price: 120, description: 'Wedding thank you cards' },
-            { id: 'save_the_date', name: 'Save the Date Cards', price: 150, description: 'Save the date announcement cards' },
-            { id: 'invitation_cards', name: 'Wedding Invitation Cards', price: 200, description: 'Custom wedding invitation cards' },
-            { id: 'photo_cards', name: 'Photo Cards', price: 100, description: 'Personalized photo cards' },
-            { id: 'calendar', name: 'Photo Calendar', price: 800, description: 'Custom photo calendar' }
-        ]
-    },
-    {
-        category: "Other Services",
-        services: [
-            { id: 'travel_charges', name: 'Travel Charges', price: 5000, description: 'Transportation and travel expenses' },
-            { id: 'editing_service', name: 'Photo Editing Service', price: 500, description: 'Professional photo editing' },
-            { id: 'digital_gallery', name: 'Digital Gallery Setup', price: 3000, description: 'Online digital photo gallery' },
-            { id: 'slideshow', name: 'Wedding Slideshow', price: 8000, description: 'Wedding photo slideshow presentation' },
-            { id: 'backup_service', name: 'Photo Backup Service', price: 2000, description: 'Professional photo backup service' },
-            { id: 'rush_delivery', name: 'Rush Delivery (24-48 hours)', price: 10000, description: 'Express delivery service' }
+            { id: 'plymount_8x12', name: '8 x 12 Plymount Enlargement', price: 1500, description: '8x12 inch plymount enlargement' },
+            { id: 'plymount_10x12', name: '10 x 12 Plymount Enlargement', price: 1800, description: '10x12 inch plymount enlargement' },
+            { id: 'plymount_10x15', name: '10 x 15 Plymount Enlargement', price: 2000, description: '10x15 inch plymount enlargement' },
+            { id: 'plymount_12x15', name: '12 x 15 Plymount Enlargement', price: 2400, description: '12x15 inch plymount enlargement' },
+            { id: 'plymount_12x18', name: '12 x 18 Plymount Enlargement', price: 2750, description: '12x18 inch plymount enlargement' }
         ]
     }
 ];
@@ -177,18 +198,7 @@ function addService() {
     serviceDiv.setAttribute('data-service-id', serviceCounter);
     
     serviceDiv.innerHTML = `
-        <div class="flex-1 min-w-[200px]">
-            <label class="block text-sm font-medium mb-2 text-gray-300">
-                <i class="fas fa-list mr-2"></i>Quick Select Service
-            </label>
-            <select name="quickService_${serviceCounter}" 
-                    class="form-input w-full mb-2"
-                    onchange="populateServiceFromCatalog(${serviceCounter}, this.value)">
-                <option value="">Choose from catalog...</option>
-                ${generateServiceCatalogOptions()}
-            </select>
-        </div>
-        <div class="flex-1 min-w-[250px]">
+        <div class="flex-1 min-w-[300px]">
             <label class="block text-sm font-medium mb-2 text-gray-300">
                 <i class="fas fa-camera mr-2"></i>Service/Item Description
             </label>
@@ -224,52 +234,6 @@ function addService() {
     console.log(`Added service row #${serviceCounter}`);
 }
 
-// Generate service catalog options for dropdown
-function generateServiceCatalogOptions() {
-    let options = '';
-    serviceCatalog.forEach(category => {
-        options += `<optgroup label="${category.category}">`;
-        category.services.forEach(service => {
-            options += `<option value="${service.name}|${service.price}|${service.description}">
-                ${service.name} - LKR ${service.price.toLocaleString()}
-            </option>`;
-        });
-        options += '</optgroup>';
-    });
-    return options;
-}
-
-// Populate service details from catalog
-function populateServiceFromCatalog(serviceId, value) {
-    if (!value) return;
-    
-    const [name, price, description] = value.split('|');
-    
-    const descriptionInput = document.querySelector(`input[name="serviceDescription_${serviceId}"]`);
-    const amountInput = document.querySelector(`input[name="serviceAmount_${serviceId}"]`);
-    
-    if (descriptionInput && amountInput) {
-        descriptionInput.value = `${name} - ${description}`;
-        amountInput.value = price;
-        calculateTotal();
-        
-        // Add visual feedback
-        const serviceRow = document.querySelector(`[data-service-id="${serviceId}"]`);
-        if (serviceRow) {
-            serviceRow.style.borderColor = '#10B981';
-            serviceRow.style.borderWidth = '2px';
-            setTimeout(() => {
-                serviceRow.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                serviceRow.style.borderWidth = '1px';
-            }, 2000);
-        }
-        
-        // Show success message
-        showSuccess(`Added ${name} - LKR ${parseInt(price).toLocaleString()}`);
-        console.log(`Added service: ${name} - LKR ${parseInt(price).toLocaleString()}`);
-    }
-}
-
 // Show service catalog modal
 function showServiceCatalog() {
     const modal = document.createElement('div');
@@ -281,7 +245,7 @@ function showServiceCatalog() {
     };
     
     modal.innerHTML = `
-        <div class="bg-dark-card rounded-xl p-6 max-w-4xl w-full max-h-[80vh] overflow-y-auto border border-white/10">
+        <div class="bg-dark-card rounded-xl p-6 max-w-5xl w-full max-h-[85vh] overflow-y-auto border border-white/10">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold text-chayathma-blue">
                     <i class="fas fa-camera mr-3"></i>Chayathma Photography Service Catalog
@@ -292,20 +256,26 @@ function showServiceCatalog() {
                 </button>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="text-sm text-gray-400 mb-4">
+                <i class="fas fa-info-circle mr-2"></i>
+                Click any service to select it for your invoice
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 ${serviceCatalog.map(category => `
                     <div class="bg-white/5 rounded-lg p-4 border border-white/10">
                         <h3 class="text-lg font-semibold text-chayathma-green mb-4">
-                            ${category.category}
+                            <i class="fas fa-folder mr-2"></i>${category.category}
                         </h3>
                         <div class="space-y-3">
                             ${category.services.map(service => `
-                                <div class="bg-white/5 rounded-lg p-3 border border-white/5">
+                                <div class="service-card bg-white/5 rounded-lg p-3 border border-white/5 hover:border-chayathma-blue/50 cursor-pointer transition-all duration-200" 
+                                     onclick="toggleServiceSelection(this, '${service.name}', ${service.price}, '${service.description}')">
                                     <div class="flex justify-between items-start mb-2">
-                                        <h4 class="font-medium text-white">${service.name}</h4>
-                                        <span class="text-chayathma-green font-bold">LKR ${service.price.toLocaleString()}</span>
+                                        <h4 class="font-medium text-white text-sm">${service.name}</h4>
+                                        <span class="text-chayathma-green font-bold text-sm">LKR ${service.price.toLocaleString()}</span>
                                     </div>
-                                    <p class="text-sm text-gray-400">${service.description}</p>
+                                    <p class="text-xs text-gray-400">${service.description}</p>
                                 </div>
                             `).join('')}
                         </div>
@@ -314,9 +284,13 @@ function showServiceCatalog() {
             </div>
             
             <div class="mt-6 text-center">
+                <button onclick="addSelectedServicesToInvoice()" 
+                        class="btn-primary mr-4">
+                    <i class="fas fa-plus mr-2"></i>Add Selected Services
+                </button>
                 <button onclick="document.body.removeChild(this.closest('.fixed'))" 
-                        class="btn-primary">
-                    <i class="fas fa-check mr-2"></i>Close Catalog
+                        class="btn-secondary">
+                    <i class="fas fa-times mr-2"></i>Close Catalog
                 </button>
             </div>
         </div>
@@ -325,8 +299,238 @@ function showServiceCatalog() {
     document.body.appendChild(modal);
 }
 
-// Add popular service directly
-function addPopularService(name, price, description) {
+// Track selected services
+let selectedServices = [];
+
+// Categories that require quantity selection
+const quantityRequiredCategories = [
+    'Wedding Enlargements',
+    'Group & Family Enlargements', 
+    'Magazine Albums',
+    'Story Albums',
+    'Thank You Cards',
+    'Preshoot Albums',
+    'Plymount Enlargements'
+];
+
+// Toggle service selection
+function toggleServiceSelection(element, name, price, description) {
+    const serviceId = `${name}_${price}`;
+    const existingIndex = selectedServices.findIndex(s => s.id === serviceId);
+    
+    if (existingIndex > -1) {
+        // Deselect service
+        selectedServices.splice(existingIndex, 1);
+        element.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+        element.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+        element.style.transform = 'scale(1)';
+    } else {
+        // Check if this service category requires quantity selection
+        const serviceCategory = getServiceCategory(name);
+        if (quantityRequiredCategories.includes(serviceCategory)) {
+            showQuantityPopup(element, name, price, description, serviceCategory);
+        } else {
+            // Select service with default quantity of 1
+            selectServiceWithQuantity(element, name, price, description, 1);
+        }
+    }
+}
+
+// Get service category by service name
+function getServiceCategory(serviceName) {
+    for (const category of serviceCatalog) {
+        const foundService = category.services.find(service => service.name === serviceName);
+        if (foundService) {
+            return category.category;
+        }
+    }
+    return null;
+}
+
+// Select service with specified quantity
+function selectServiceWithQuantity(element, name, price, description, quantity) {
+    const serviceId = `${name}_${price}_${quantity}`;
+    selectedServices.push({ id: serviceId, name, price, description, quantity });
+    element.style.backgroundColor = 'rgba(16, 185, 129, 0.2)';
+    element.style.borderColor = '#10B981';
+    element.style.borderWidth = '2px';
+    element.style.transform = 'scale(1.02)';
+    
+    // Add quantity indicator
+    let quantityBadge = element.querySelector('.quantity-badge');
+    if (!quantityBadge) {
+        quantityBadge = document.createElement('div');
+        quantityBadge.className = 'quantity-badge';
+        quantityBadge.style.cssText = `
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #10B981;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 10;
+        `;
+        element.style.position = 'relative';
+        element.appendChild(quantityBadge);
+    }
+    quantityBadge.textContent = quantity;
+}
+
+// Show quantity selection popup
+function showQuantityPopup(element, name, price, description, category) {
+    const popup = document.createElement('div');
+    popup.className = 'fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4';
+    popup.id = 'quantityPopup'; // Add unique ID
+    popup.onclick = (e) => {
+        if (e.target === popup) {
+            document.body.removeChild(popup);
+        }
+    };
+    
+    // Store element reference globally for access
+    window.currentQuantityElement = element;
+    
+    popup.innerHTML = `
+        <div class="bg-dark-card rounded-xl p-6 max-w-md w-full border border-white/10 animate-scale-in">
+            <div class="text-center mb-6">
+                <div class="bg-chayathma-blue/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-copy text-chayathma-blue text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Select Quantity</h3>
+                <p class="text-gray-400 text-sm mb-1">${name}</p>
+                <p class="text-chayathma-green font-bold">LKR ${price.toLocaleString()} each</p>
+            </div>
+            
+            <div class="mb-6">
+                <label class="block text-sm font-medium mb-3 text-gray-300">
+                    <i class="fas fa-hashtag mr-2"></i>How many copies do you need?
+                </label>
+                <div class="flex items-center justify-center space-x-4">
+                    <button onclick="adjustQuantity(-1)" class="bg-gray-600 hover:bg-gray-500 text-white w-10 h-10 rounded-lg flex items-center justify-center transition-colors">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <input type="number" id="quantityInput" value="1" min="1" max="99" 
+                           class="bg-white/10 border border-white/20 text-white text-center w-20 h-10 rounded-lg font-bold text-lg" 
+                           oninput="updateTotal()">
+                    <button onclick="adjustQuantity(1)" class="bg-gray-600 hover:bg-gray-500 text-white w-10 h-10 rounded-lg flex items-center justify-center transition-colors">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="bg-white/5 rounded-lg p-4 mb-6 border border-white/10">
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-300">Total Amount:</span>
+                    <span id="totalAmount" class="text-chayathma-green font-bold text-lg">LKR ${price.toLocaleString()}</span>
+                </div>
+            </div>
+            
+            <div class="flex space-x-3">
+                <button onclick="closeQuantityPopup()" 
+                        class="flex-1 bg-gray-600 hover:bg-gray-500 text-white py-3 px-4 rounded-lg font-medium transition-colors">
+                    <i class="fas fa-times mr-2"></i>Cancel
+                </button>
+                <button onclick="confirmQuantitySelection('${name.replace(/'/g, "\\'").replace(/"/g, '\\"')}', ${price}, '${description.replace(/'/g, "\\'").replace(/"/g, '\\"')}')" 
+                        class="flex-1 bg-chayathma-blue hover:bg-chayathma-blue/80 text-white py-3 px-4 rounded-lg font-medium transition-colors">
+                    <i class="fas fa-check mr-2"></i>Confirm
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(popup);
+}
+
+// Quantity popup helper functions
+function adjustQuantity(change) {
+    const input = document.getElementById('quantityInput');
+    const currentValue = parseInt(input.value) || 1;
+    const newValue = Math.max(1, Math.min(99, currentValue + change));
+    input.value = newValue;
+    updateTotal();
+}
+
+function updateTotal() {
+    const quantityInput = document.getElementById('quantityInput');
+    const totalAmountElement = document.getElementById('totalAmount');
+    
+    if (!quantityInput || !totalAmountElement) return;
+    
+    const quantity = parseInt(quantityInput.value) || 1;
+    
+    // Get price from the popup text
+    const popup = document.querySelector('.fixed');
+    if (!popup) return;
+    
+    const priceElement = popup.querySelector('.text-chayathma-green');
+    if (!priceElement) return;
+    
+    const priceText = priceElement.textContent;
+    const price = parseInt(priceText.replace(/[^0-9]/g, ''));
+    
+    if (!isNaN(price)) {
+        const total = price * quantity;
+        totalAmountElement.textContent = `LKR ${total.toLocaleString()}`;
+    }
+}
+
+// Close quantity popup
+function closeQuantityPopup() {
+    const popup = document.getElementById('quantityPopup');
+    if (popup) {
+        document.body.removeChild(popup);
+    }
+    // Clear the global reference
+    window.currentQuantityElement = null;
+}
+
+function confirmQuantitySelection(name, price, description) {
+    const quantity = parseInt(document.getElementById('quantityInput').value) || 1;
+    const element = window.currentQuantityElement;
+    
+    // Close popup immediately
+    closeQuantityPopup();
+    
+    // Then select the service
+    if (element) {
+        selectServiceWithQuantity(element, name, price, description, quantity);
+    }
+}
+
+// Add selected services to invoice
+function addSelectedServicesToInvoice() {
+    if (selectedServices.length === 0) {
+        showError('Please select at least one service');
+        return;
+    }
+    
+    const serviceCount = selectedServices.length;
+    
+    selectedServices.forEach(service => {
+        addServiceFromCatalog(service.name, service.price, service.description, service.quantity || 1);
+    });
+    
+    // Clear selections
+    selectedServices = [];
+    
+    // Close modal
+    const modal = document.querySelector('.fixed');
+    if (modal) {
+        document.body.removeChild(modal);
+    }
+    
+    showSuccess(`Added ${serviceCount} service(s) to invoice`);
+}
+
+// Add service from catalog to invoice
+function addServiceFromCatalog(name, price, description, quantity = 1) {
     // Add a new service row first
     addService();
     
@@ -338,8 +542,11 @@ function addPopularService(name, price, description) {
     const amountInput = document.querySelector(`input[name="serviceAmount_${currentServiceId}"]`);
     
     if (descriptionInput && amountInput) {
-        descriptionInput.value = `${name} - ${description}`;
-        amountInput.value = price;
+        const totalPrice = price * quantity;
+        const serviceDescription = quantity > 1 ? `${name} (${quantity} copies) - ${description}` : `${name} - ${description}`;
+        
+        descriptionInput.value = serviceDescription;
+        amountInput.value = totalPrice;
         calculateTotal();
         
         // Add visual feedback
@@ -354,7 +561,13 @@ function addPopularService(name, price, description) {
         }
         
         // Show success message
-        showSuccess(`Added ${name} - LKR ${parseInt(price).toLocaleString()}`);
+        const successMessage = quantity > 1 
+            ? `Added ${quantity}x ${name} - LKR ${totalPrice.toLocaleString()}`
+            : `Added ${name} - LKR ${totalPrice.toLocaleString()}`;
+        showSuccess(successMessage);
+        
+        // Scroll to the newly added service row
+        serviceRow?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 }
 
@@ -893,10 +1106,17 @@ function showError(message) {
 // Export functions for global access
 window.showTab = showTab;
 window.addService = addService;
-window.addPopularService = addPopularService;
+window.addServiceFromCatalog = addServiceFromCatalog;
+window.toggleServiceSelection = toggleServiceSelection;
+window.selectServiceWithQuantity = selectServiceWithQuantity;
+window.showQuantityPopup = showQuantityPopup;
+window.closeQuantityPopup = closeQuantityPopup;
+window.adjustQuantity = adjustQuantity;
+window.updateTotal = updateTotal;
+window.confirmQuantitySelection = confirmQuantitySelection;
+window.addSelectedServicesToInvoice = addSelectedServicesToInvoice;
 window.removeService = removeService;
 window.calculateTotal = calculateTotal;
-window.populateServiceFromCatalog = populateServiceFromCatalog;
 window.showServiceCatalog = showServiceCatalog;
 window.toggleInvoiceStatus = toggleInvoiceStatus;
 window.downloadInvoice = downloadInvoice;
