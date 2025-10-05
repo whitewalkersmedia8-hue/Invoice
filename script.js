@@ -194,11 +194,11 @@ function addService() {
     }
     
     const serviceDiv = document.createElement('div');
-    serviceDiv.className = 'service-row flex flex-wrap gap-4 items-end p-4 bg-white/5 rounded-lg border border-white/10';
+    serviceDiv.className = 'service-row flex flex-col sm:flex-row gap-4 items-stretch sm:items-end p-4 bg-white/5 rounded-lg border border-white/10';
     serviceDiv.setAttribute('data-service-id', serviceCounter);
     
     serviceDiv.innerHTML = `
-        <div class="flex-1 min-w-[300px]">
+        <div class="flex-1 min-w-0">
             <label class="block text-sm font-medium mb-2 text-gray-300">
                 <i class="fas fa-camera mr-2"></i>Service/Item Description
             </label>
@@ -208,7 +208,7 @@ function addService() {
                    class="form-input w-full"
                    oninput="calculateTotal()">
         </div>
-        <div class="w-40">
+        <div class="w-full sm:w-32">
             <label class="block text-sm font-medium mb-2 text-gray-300">
                 <i class="fas fa-money-bill mr-2"></i>Amount (LKR)
             </label>
@@ -220,12 +220,13 @@ function addService() {
                    step="0.01"
                    oninput="calculateTotal()">
         </div>
-        <div class="flex items-end">
+        <div class="flex items-end justify-center sm:justify-start">
             <button type="button" 
                     onclick="removeService(${serviceCounter})"
-                    class="btn-danger px-3 py-2 mb-0"
+                    class="btn-danger px-3 py-2 mb-0 w-full sm:w-auto"
                     title="Remove this service">
-                <i class="fas fa-trash"></i>
+                <i class="fas fa-trash mr-1 sm:mr-0"></i>
+                <span class="sm:hidden">Remove</span>
             </button>
         </div>
     `;
@@ -237,7 +238,7 @@ function addService() {
 // Show service catalog modal
 function showServiceCatalog() {
     const modal = document.createElement('div');
-    modal.className = 'fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4';
+    modal.className = 'fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4';
     modal.onclick = (e) => {
         if (e.target === modal) {
             document.body.removeChild(modal);
@@ -245,35 +246,35 @@ function showServiceCatalog() {
     };
     
     modal.innerHTML = `
-        <div class="bg-dark-card rounded-xl p-6 max-w-5xl w-full max-h-[85vh] overflow-y-auto border border-white/10">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold text-chayathma-blue">
-                    <i class="fas fa-camera mr-3"></i>Chayathma Photography Service Catalog
+        <div class="bg-dark-card rounded-xl p-4 sm:p-6 w-full max-w-6xl max-h-[90vh] overflow-y-auto border border-white/10">
+            <div class="flex justify-between items-center mb-4 sm:mb-6">
+                <h2 class="text-lg sm:text-2xl font-bold text-chayathma-blue">
+                    <i class="fas fa-camera mr-2 sm:mr-3"></i>Chayathma Photography Service Catalog
                 </h2>
                 <button onclick="document.body.removeChild(this.closest('.fixed'))" 
-                        class="text-gray-400 hover:text-white">
-                    <i class="fas fa-times text-xl"></i>
+                        class="text-gray-400 hover:text-white p-1">
+                    <i class="fas fa-times text-lg sm:text-xl"></i>
                 </button>
             </div>
             
-            <div class="text-sm text-gray-400 mb-4">
+            <div class="text-xs sm:text-sm text-gray-400 mb-4">
                 <i class="fas fa-info-circle mr-2"></i>
                 Click any service to select it for your invoice
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 ${serviceCatalog.map(category => `
-                    <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-                        <h3 class="text-lg font-semibold text-chayathma-green mb-4">
+                    <div class="bg-white/5 rounded-lg p-3 sm:p-4 border border-white/10">
+                        <h3 class="text-base sm:text-lg font-semibold text-chayathma-green mb-3 sm:mb-4">
                             <i class="fas fa-folder mr-2"></i>${category.category}
                         </h3>
-                        <div class="space-y-3">
+                        <div class="space-y-2 sm:space-y-3">
                             ${category.services.map(service => `
-                                <div class="service-card bg-white/5 rounded-lg p-3 border border-white/5 hover:border-chayathma-blue/50 cursor-pointer transition-all duration-200" 
+                                <div class="service-card bg-white/5 rounded-lg p-2 sm:p-3 border border-white/5 hover:border-chayathma-blue/50 cursor-pointer transition-all duration-200" 
                                      onclick="toggleServiceSelection(this, '${service.name}', ${service.price}, '${service.description}')">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <h4 class="font-medium text-white text-sm">${service.name}</h4>
-                                        <span class="text-chayathma-green font-bold text-sm">LKR ${service.price.toLocaleString()}</span>
+                                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 mb-2">
+                                        <h4 class="font-medium text-white text-xs sm:text-sm">${service.name}</h4>
+                                        <span class="text-chayathma-green font-bold text-xs sm:text-sm">LKR ${service.price.toLocaleString()}</span>
                                     </div>
                                     <p class="text-xs text-gray-400">${service.description}</p>
                                 </div>
@@ -283,13 +284,13 @@ function showServiceCatalog() {
                 `).join('')}
             </div>
             
-            <div class="mt-6 text-center">
+            <div class="mt-4 sm:mt-6 flex flex-col sm:flex-row gap-3 sm:justify-center">
                 <button onclick="addSelectedServicesToInvoice()" 
-                        class="btn-primary mr-4">
+                        class="btn-primary w-full sm:w-auto order-2 sm:order-1">
                     <i class="fas fa-plus mr-2"></i>Add Selected Services
                 </button>
                 <button onclick="document.body.removeChild(this.closest('.fixed'))" 
-                        class="btn-secondary">
+                        class="btn-secondary w-full sm:w-auto order-1 sm:order-2">
                     <i class="fas fa-times mr-2"></i>Close Catalog
                 </button>
             </div>

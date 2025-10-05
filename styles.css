@@ -305,6 +305,47 @@ tr:hover {
     .w-64 {
         width: 100% !important;
     }
+    
+    /* Better mobile form layouts */
+    .form-input {
+        font-size: 16px; /* Prevent zoom on iOS */
+        padding: 0.875rem 0.75rem;
+    }
+    
+    /* Mobile-friendly buttons */
+    .btn-primary,
+    .btn-success,
+    .btn-secondary,
+    .btn-danger {
+        min-height: 44px; /* iOS touch target size */
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+    }
+    
+    /* Better mobile spacing */
+    .service-row {
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Mobile table improvements */
+    .overflow-x-auto {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    table {
+        font-size: 0.875rem;
+    }
+    
+    th, td {
+        padding: 0.5rem 0.25rem;
+        white-space: nowrap;
+    }
+    
+    /* Mobile modal improvements */
+    .fixed {
+        padding: 1rem;
+    }
 }
 
 /* Print Styles */

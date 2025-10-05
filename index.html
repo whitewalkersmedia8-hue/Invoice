@@ -36,16 +36,16 @@
     <!-- Header -->
     <header class="bg-black/20 backdrop-blur-sm border-b border-white/10 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <img src="logo-chayathma.png" alt="Chayathma Photography" class="w-12 h-12 rounded-lg" onerror="this.style.display='none'">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <img src="logo-chayathma.png" alt="Chayathma Photography" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg" onerror="this.style.display='none'">
                     <div>
-                        <h1 class="text-2xl font-bold text-chayathma-blue">CHAYATHMA PHOTOGRAPHY</h1>
-                        <p class="text-sm text-gray-400">Professional Invoice Generator</p>
+                        <h1 class="text-sm sm:text-lg md:text-2xl font-bold text-chayathma-blue">CHAYATHMA PHOTOGRAPHY</h1>
+                        <p class="text-xs sm:text-xs md:text-sm text-gray-400">Professional Invoice Generator</p>
                     </div>
                 </div>
-                <div class="text-right text-sm text-gray-400">
-                    <p>Email: chayathma@gmail.com</p>
+                <div class="text-right text-xs sm:text-xs md:text-sm text-gray-400">
+                    <p class="hidden sm:block">Email: chayathma@gmail.com</p>
                     <p>Phone: +94 76 30 40 134</p>
                 </div>
             </div>
@@ -56,79 +56,79 @@
     <main class="max-w-7xl mx-auto px-4 py-8">
         
         <!-- Stats Dashboard -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/10">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-gray-400 text-sm">Total Invoices</p>
-                        <p class="text-2xl font-bold" id="totalInvoices">0</p>
+                        <p class="text-gray-400 text-xs md:text-sm">Total Invoices</p>
+                        <p class="text-xl md:text-2xl font-bold" id="totalInvoices">0</p>
                     </div>
-                    <div class="bg-chayathma-blue/20 p-3 rounded-lg">
-                        <i class="fas fa-file-invoice text-chayathma-blue text-xl"></i>
+                    <div class="bg-chayathma-blue/20 p-2 md:p-3 rounded-lg">
+                        <i class="fas fa-file-invoice text-chayathma-blue text-lg md:text-xl"></i>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/10">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-gray-400 text-sm">Total Revenue</p>
-                        <p class="text-2xl font-bold" id="totalRevenue">LKR 0</p>
+                        <p class="text-gray-400 text-xs md:text-sm">Total Revenue</p>
+                        <p class="text-xl md:text-2xl font-bold" id="totalRevenue">LKR 0</p>
                     </div>
-                    <div class="bg-chayathma-green/20 p-3 rounded-lg">
-                        <i class="fas fa-chart-line text-chayathma-green text-xl"></i>
+                    <div class="bg-chayathma-green/20 p-2 md:p-3 rounded-lg">
+                        <i class="fas fa-chart-line text-chayathma-green text-lg md:text-xl"></i>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/10">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-gray-400 text-sm">Paid Invoices</p>
-                        <p class="text-2xl font-bold" id="paidInvoices">0</p>
+                        <p class="text-gray-400 text-xs md:text-sm">Paid Invoices</p>
+                        <p class="text-xl md:text-2xl font-bold" id="paidInvoices">0</p>
                     </div>
-                    <div class="bg-green-500/20 p-3 rounded-lg">
-                        <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                    <div class="bg-green-500/20 p-2 md:p-3 rounded-lg">
+                        <i class="fas fa-check-circle text-green-500 text-lg md:text-xl"></i>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/10">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-gray-400 text-sm">Pending Invoices</p>
-                        <p class="text-2xl font-bold" id="pendingInvoices">0</p>
+                        <p class="text-gray-400 text-xs md:text-sm">Pending Invoices</p>
+                        <p class="text-xl md:text-2xl font-bold" id="pendingInvoices">0</p>
                     </div>
-                    <div class="bg-yellow-500/20 p-3 rounded-lg">
-                        <i class="fas fa-clock text-yellow-500 text-xl"></i>
+                    <div class="bg-yellow-500/20 p-2 md:p-3 rounded-lg">
+                        <i class="fas fa-clock text-yellow-500 text-lg md:text-xl"></i>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Navigation Tabs -->
-        <div class="flex space-x-1 mb-8 bg-white/5 rounded-xl p-1 backdrop-blur-sm border border-white/10">
-            <button onclick="showTab('create')" id="createTab" class="tab-button active flex-1 py-3 px-6 rounded-lg font-medium transition-all duration-200">
-                <i class="fas fa-plus-circle mr-2"></i>Create Invoice
+        <div class="flex space-x-1 mb-6 sm:mb-8 bg-white/5 rounded-xl p-1 backdrop-blur-sm border border-white/10 overflow-x-auto">
+            <button onclick="showTab('create')" id="createTab" class="tab-button active flex-1 min-w-max py-2 sm:py-2 md:py-3 px-3 sm:px-4 md:px-6 rounded-lg font-medium transition-all duration-200 text-xs sm:text-sm md:text-base">
+                <i class="fas fa-plus-circle mr-1 md:mr-2"></i>Create Invoice
             </button>
-            <button onclick="showTab('list')" id="listTab" class="tab-button flex-1 py-3 px-6 rounded-lg font-medium transition-all duration-200">
-                <i class="fas fa-list mr-2"></i>Invoice List
+            <button onclick="showTab('list')" id="listTab" class="tab-button flex-1 min-w-max py-2 sm:py-2 md:py-3 px-3 sm:px-4 md:px-6 rounded-lg font-medium transition-all duration-200 text-xs sm:text-sm md:text-base">
+                <i class="fas fa-list mr-1 md:mr-2"></i>Invoice List
             </button>
         </div>
 
         <!-- Create Invoice Tab -->
         <div id="createInvoiceTab" class="tab-content">
-            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-                <h2 class="text-2xl font-bold mb-6 flex items-center">
-                    <i class="fas fa-file-invoice-dollar text-chayathma-blue mr-3"></i>
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-3 sm:p-4 md:p-8 border border-white/10">
+                <h2 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 flex items-center">
+                    <i class="fas fa-file-invoice-dollar text-chayathma-blue mr-2 md:mr-3"></i>
                     Create New Invoice
                 </h2>
                 
-                <form id="invoiceForm" class="space-y-8">
+                <form id="invoiceForm" class="space-y-4 sm:space-y-6 md:space-y-8">
                     <!-- Wedding Details -->
                     <section>
-                        <h3 class="text-xl font-semibold mb-4 text-chayathma-blue">Wedding Details</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <h3 class="text-lg md:text-xl font-semibold mb-4 text-chayathma-blue">Wedding Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <div>
                                 <label class="block text-sm font-medium mb-2">
                                     <i class="fas fa-female mr-2"></i>Bride's Name *
@@ -148,8 +148,8 @@
 
                     <!-- Contact Information -->
                     <section>
-                        <h3 class="text-xl font-semibold mb-4 text-chayathma-blue">Contact Information</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <h3 class="text-lg md:text-xl font-semibold mb-4 text-chayathma-blue">Contact Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <div>
                                 <label class="block text-sm font-medium mb-2">
                                     <i class="fas fa-envelope mr-2"></i>Email
@@ -177,8 +177,8 @@
 
                     <!-- Invoice Details -->
                     <section>
-                        <h3 class="text-xl font-semibold mb-4 text-chayathma-blue">Invoice Details</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <h3 class="text-lg md:text-xl font-semibold mb-4 text-chayathma-blue">Invoice Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <div>
                                 <label class="block text-sm font-medium mb-2">
                                     <i class="fas fa-hashtag mr-2"></i>Invoice Number
@@ -199,8 +199,8 @@
 
                     <!-- Event Details -->
                     <section>
-                        <h3 class="text-xl font-semibold mb-4 text-chayathma-blue">Event Details</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <h3 class="text-lg md:text-xl font-semibold mb-4 text-chayathma-blue">Event Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <div>
                                 <label class="block text-sm font-medium mb-2">
                                     <i class="fas fa-heart mr-2"></i>Wedding Date
@@ -232,10 +232,10 @@
 
                     <!-- Services & Items -->
                     <section>
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl font-semibold text-chayathma-blue">Services & Items</h3>
+                        <div class="flex flex-col gap-3 sm:gap-4 mb-4">
+                            <h3 class="text-base sm:text-lg md:text-xl font-semibold text-chayathma-blue">Services & Items</h3>
                             <button type="button" onclick="showServiceCatalog()" 
-                                    class="btn-secondary text-sm">
+                                    class="btn-secondary text-sm w-full sm:w-auto">
                                 <i class="fas fa-book mr-2"></i>View Full Service Catalog
                             </button>
                         </div>
@@ -244,15 +244,15 @@
                             <!-- Services will be dynamically added here -->
                         </div>
                         <button type="button" onclick="addService()" 
-                                class="mt-4 btn-primary">
+                                class="mt-4 btn-primary w-full text-sm">
                             <i class="fas fa-plus mr-2"></i>Add Custom Service/Item
                         </button>
                     </section>
 
                     <!-- Additional Charges -->
                     <section>
-                        <h3 class="text-xl font-semibold mb-4 text-chayathma-blue">Additional Charges & Discounts</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <h3 class="text-lg md:text-xl font-semibold mb-4 text-chayathma-blue">Additional Charges & Discounts</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                             <div>
                                 <label class="block text-sm font-medium mb-2">
                                     <i class="fas fa-truck mr-2"></i>Transport Charges
@@ -288,8 +288,8 @@
                     </section>
 
                     <!-- Invoice Summary -->
-                    <section class="bg-white/10 rounded-lg p-6 border border-white/20">
-                        <h3 class="text-xl font-semibold mb-4 text-chayathma-green">Invoice Summary</h3>
+                    <section class="bg-white/10 rounded-lg p-4 sm:p-6 border border-white/20">
+                        <h3 class="text-lg sm:text-xl font-semibold mb-4 text-chayathma-green">Invoice Summary</h3>
                         <div class="space-y-2">
                             <div class="flex justify-between">
                                 <span>Subtotal:</span>
@@ -313,7 +313,7 @@
 
                     <!-- Generate Button -->
                     <div class="text-center">
-                        <button type="submit" class="btn-success text-lg px-8 py-4">
+                        <button type="submit" class="btn-success text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto">
                             <i class="fas fa-file-invoice mr-2"></i>Generate Invoice
                         </button>
                     </div>
@@ -323,16 +323,16 @@
 
         <!-- Invoice List Tab -->
         <div id="invoiceListTab" class="tab-content hidden">
-            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-bold flex items-center">
-                        <i class="fas fa-table text-chayathma-blue mr-3"></i>
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-3 sm:p-6 md:p-8 border border-white/10">
+                <div class="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6">
+                    <h2 class="text-lg sm:text-xl md:text-2xl font-bold flex items-center">
+                        <i class="fas fa-table text-chayathma-blue mr-2 sm:mr-3"></i>
                         All Invoices
                     </h2>
-                    <div class="flex space-x-2">
+                    <div class="flex flex-col sm:flex-row gap-2 sm:space-x-2">
                         <input type="text" id="searchInput" placeholder="Search invoices..." 
-                               class="form-input w-64" onkeyup="searchInvoices()">
-                        <button onclick="clearAllData()" class="btn-danger">
+                               class="form-input w-full sm:w-64" onkeyup="searchInvoices()">
+                        <button onclick="clearAllData()" class="btn-danger w-full sm:w-auto">
                             <i class="fas fa-trash mr-2"></i>Clear All
                         </button>
                     </div>
