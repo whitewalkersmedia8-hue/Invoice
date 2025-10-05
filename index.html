@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chayathma Photography - Invoice Generator</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'chayathma-blue': '#4a90e2',
+                        'chayathma-green': '#10B981',
+                        'chayathma-orange': '#ff6b35',
+                        'dark-bg': '#1a1a2e',
+                        'dark-card': '#16213e',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-dark-bg via-blue-900 to-purple-900 min-h-screen text-white">
+    
+    <!-- Header -->
+    <header class="bg-black/20 backdrop-blur-sm border-b border-white/10 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <img src="logo-chayathma.png" alt="Chayathma Photography" class="w-12 h-12 rounded-lg" onerror="this.style.display='none'">
+                    <div>
+                        <h1 class="text-2xl font-bold text-chayathma-blue">CHAYATHMA PHOTOGRAPHY</h1>
+                        <p class="text-sm text-gray-400">Professional Invoice Generator</p>
+                    </div>
+                </div>
+                <div class="text-right text-sm text-gray-400">
+                    <p>Email: chayathma@gmail.com</p>
+                    <p>Phone: +94 76 30 40 134</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        
+        <!-- Stats Dashboard -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm">Total Invoices</p>
+                        <p class="text-2xl font-bold" id="totalInvoices">0</p>
+                    </div>
+                    <div class="bg-chayathma-blue/20 p-3 rounded-lg">
+                        <i class="fas fa-file-invoice text-chayathma-blue text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm">Total Revenue</p>
+                        <p class="text-2xl font-bold" id="totalRevenue">LKR 0</p>
+                    </div>
+                    <div class="bg-chayathma-green/20 p-3 rounded-lg">
+                        <i class="fas fa-chart-line text-chayathma-green text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm">Paid Invoices</p>
+                        <p class="text-2xl font-bold" id="paidInvoices">0</p>
+                    </div>
+                    <div class="bg-green-500/20 p-3 rounded-lg">
+                        <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm">Pending Invoices</p>
+                        <p class="text-2xl font-bold" id="pendingInvoices">0</p>
+                    </div>
+                    <div class="bg-yellow-500/20 p-3 rounded-lg">
+                        <i class="fas fa-clock text-yellow-500 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="flex space-x-1 mb-8 bg-white/5 rounded-xl p-1 backdrop-blur-sm border border-white/10">
+            <button onclick="showTab('create')" id="createTab" class="tab-button active flex-1 py-3 px-6 rounded-lg font-medium transition-all duration-200">
+                <i class="fas fa-plus-circle mr-2"></i>Create Invoice
+            </button>
+            <button onclick="showTab('list')" id="listTab" class="tab-button flex-1 py-3 px-6 rounded-lg font-medium transition-all duration-200">
+                <i class="fas fa-list mr-2"></i>Invoice List
+            </button>
+        </div>
+
+        <!-- Create Invoice Tab -->
+        <div id="createInvoiceTab" class="tab-content">
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-file-invoice-dollar text-chayathma-blue mr-3"></i>
+                    Create New Invoice
+                </h2>
+                
+                <form id="invoiceForm" class="space-y-8">
+                    <!-- Wedding Details -->
+                    <section>
+                        <h3 class="text-xl font-semibold mb-4 text-chayathma-blue">Wedding Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-female mr-2"></i>Bride's Name *
+                                </label>
+                                <input type="text" name="brideName" required 
+                                       class="form-input w-full" placeholder="Enter bride's name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-male mr-2"></i>Groom's Name *
+                                </label>
+                                <input type="text" name="groomName" required 
+                                       class="form-input w-full" placeholder="Enter groom's name">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contact Information -->
+                    <section>
+                        <h3 class="text-xl font-semibold mb-4 text-chayathma-blue">Contact Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-envelope mr-2"></i>Email
+                                </label>
+                                <input type="email" name="clientEmail" 
+                                       class="form-input w-full" placeholder="client@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-phone mr-2"></i>Phone
+                                </label>
+                                <input type="tel" name="clientPhone" 
+                                       class="form-input w-full" placeholder="+94 XX XXX XXXX">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium mb-2">
+                                <i class="fas fa-map-marker-alt mr-2"></i>Address
+                            </label>
+                            <textarea name="clientAddress" rows="3" 
+                                      class="form-input w-full resize-none" 
+                                      placeholder="Enter client address"></textarea>
+                        </div>
+                    </section>
+
+                    <!-- Invoice Details -->
+                    <section>
+                        <h3 class="text-xl font-semibold mb-4 text-chayathma-blue">Invoice Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-hashtag mr-2"></i>Invoice Number
+                                </label>
+                                <input type="text" name="invoiceNumber" 
+                                       class="form-input w-full bg-gray-600/50" 
+                                       placeholder="Auto-generated" readonly>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-calendar mr-2"></i>Invoice Date
+                                </label>
+                                <input type="date" name="invoiceDate" 
+                                       class="form-input w-full">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Event Details -->
+                    <section>
+                        <h3 class="text-xl font-semibold mb-4 text-chayathma-blue">Event Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-heart mr-2"></i>Wedding Date
+                                </label>
+                                <input type="date" name="weddingDate" class="form-input w-full">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-map-pin mr-2"></i>Wedding Venue
+                                </label>
+                                <input type="text" name="weddingVenue" 
+                                       class="form-input w-full" placeholder="Wedding venue">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-home mr-2"></i>Homecoming Date
+                                </label>
+                                <input type="date" name="homecomingDate" class="form-input w-full">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-location-dot mr-2"></i>Homecoming Venue
+                                </label>
+                                <input type="text" name="homecomingVenue" 
+                                       class="form-input w-full" placeholder="Homecoming venue">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Services & Items -->
+                    <section>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold text-chayathma-blue">Services & Items</h3>
+                            <button type="button" onclick="showServiceCatalog()" 
+                                    class="btn-secondary text-sm">
+                                <i class="fas fa-book mr-2"></i>View Full Service Catalog
+                            </button>
+                        </div>
+                        
+                        <!-- Popular Services Quick Add -->
+                        <div class="bg-white/5 rounded-lg p-4 mb-4 border border-white/10">
+                            <h4 class="text-sm font-semibold text-chayathma-green mb-3">
+                                <i class="fas fa-star mr-2"></i>Popular Services - Quick Add
+                            </h4>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                <button type="button" onclick="addPopularService('Wedding Coverage', 45000, 'Complete wedding day photography coverage')" 
+                                        class="text-xs bg-chayathma-blue/20 hover:bg-chayathma-blue/30 text-white px-3 py-2 rounded transition-colors">
+                                    Wedding Coverage
+                                </button>
+                                <button type="button" onclick="addPopularService('Homecoming', 80000, 'Traditional homecoming ceremony coverage')" 
+                                        class="text-xs bg-chayathma-green/20 hover:bg-chayathma-green/30 text-white px-3 py-2 rounded transition-colors">
+                                    Homecoming
+                                </button>
+                                <button type="button" onclick="addPopularService('17x24 Magazine Album', 80000, 'Premium large format magazine album')" 
+                                        class="text-xs bg-purple-500/20 hover:bg-purple-500/30 text-white px-3 py-2 rounded transition-colors">
+                                    Magazine Album
+                                </button>
+                                <button type="button" onclick="addPopularService('Pre-Wedding Shoot', 35000, 'Pre-wedding photography session')" 
+                                        class="text-xs bg-orange-500/20 hover:bg-orange-500/30 text-white px-3 py-2 rounded transition-colors">
+                                    Pre-Wedding
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="servicesContainer" class="space-y-4">
+                            <!-- Services will be dynamically added here -->
+                        </div>
+                        <button type="button" onclick="addService()" 
+                                class="mt-4 btn-primary">
+                            <i class="fas fa-plus mr-2"></i>Add Custom Service/Item
+                        </button>
+                    </section>
+
+                    <!-- Additional Charges -->
+                    <section>
+                        <h3 class="text-xl font-semibold mb-4 text-chayathma-blue">Additional Charges & Discounts</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-truck mr-2"></i>Transport Charges
+                                </label>
+                                <input type="number" name="transportCharges" min="0" step="0.01"
+                                       class="form-input w-full" placeholder="0.00" oninput="calculateTotal()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-percentage mr-2"></i>Discount Type
+                                </label>
+                                <select name="discountType" class="form-input w-full" onchange="calculateTotal()">
+                                    <option value="amount">Fixed Amount (LKR)</option>
+                                    <option value="percentage">Percentage (%)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    <i class="fas fa-tag mr-2"></i>Discount Value
+                                </label>
+                                <input type="number" name="discount" min="0" step="0.01"
+                                       class="form-input w-full" placeholder="0.00" oninput="calculateTotal()">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Notes -->
+                    <section>
+                        <h3 class="text-xl font-semibold mb-4 text-chayathma-blue">Additional Notes</h3>
+                        <textarea name="notes" rows="4" 
+                                  class="form-input w-full resize-none" 
+                                  placeholder="Special instructions or notes for the client"></textarea>
+                    </section>
+
+                    <!-- Invoice Summary -->
+                    <section class="bg-white/10 rounded-lg p-6 border border-white/20">
+                        <h3 class="text-xl font-semibold mb-4 text-chayathma-green">Invoice Summary</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Subtotal:</span>
+                                <span id="subtotalAmount">LKR 0.00</span>
+                            </div>
+                            <div class="flex justify-between" id="transportRow" style="display: none;">
+                                <span>Transport Charges:</span>
+                                <span id="transportAmount">LKR 0.00</span>
+                            </div>
+                            <div class="flex justify-between" id="discountRow" style="display: none;">
+                                <span>Discount:</span>
+                                <span id="discountAmount">- LKR 0.00</span>
+                            </div>
+                            <hr class="border-white/20">
+                            <div class="flex justify-between text-xl font-bold text-chayathma-green">
+                                <span>Total Amount:</span>
+                                <span id="totalAmount">LKR 0.00</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Generate Button -->
+                    <div class="text-center">
+                        <button type="submit" class="btn-success text-lg px-8 py-4">
+                            <i class="fas fa-file-invoice mr-2"></i>Generate Invoice
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Invoice List Tab -->
+        <div id="invoiceListTab" class="tab-content hidden">
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-table text-chayathma-blue mr-3"></i>
+                        All Invoices
+                    </h2>
+                    <div class="flex space-x-2">
+                        <input type="text" id="searchInput" placeholder="Search invoices..." 
+                               class="form-input w-64" onkeyup="searchInvoices()">
+                        <button onclick="clearAllData()" class="btn-danger">
+                            <i class="fas fa-trash mr-2"></i>Clear All
+                        </button>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full" id="invoicesTable">
+                        <thead>
+                            <tr class="border-b border-white/20">
+                                <th class="text-left py-3 px-4">Invoice No</th>
+                                <th class="text-left py-3 px-4">Date</th>
+                                <th class="text-left py-3 px-4">Client</th>
+                                <th class="text-left py-3 px-4">Amount</th>
+                                <th class="text-left py-3 px-4">Status</th>
+                                <th class="text-left py-3 px-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoicesTableBody">
+                            <tr>
+                                <td colspan="6" class="text-center py-12 text-gray-400">
+                                    <i class="fas fa-clipboard-list text-4xl mb-4 opacity-30"></i>
+                                    <p>No invoices created yet</p>
+                                    <p class="text-sm">Create your first invoice to get started</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="fixed top-4 right-4 bg-chayathma-green text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300">
+        <i class="fas fa-check-circle mr-2"></i>
+        <span id="successText">Invoice created successfully!</span>
+    </div>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300">
+        <i class="fas fa-exclamation-circle mr-2"></i>
+        <span id="errorText">Error occurred!</span>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
